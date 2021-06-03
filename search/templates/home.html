@@ -1,31 +1,65 @@
 {% extends "base.html" %}
+{% load thumbnail %}
 {% block title %}
     {% if subject %}
-        {{ subject.title }} courses
+        {{ subject.title }} Search
     {% else %}
-        All courses
+        Search
     {% endif %}
 {% endblock %}
 
 {% block content %}
-<div class="module">
-<form>
-    {{ form.search }}
-    {{ form.filter_field_1 }}
-    <input type="submit" class="btn btn-default" value="Search">
-</form>
+<div class="card">
+    <div class="card-header">  
+        <h1>Search</h1>
+        <div class="card-tools">
+            <span title="3 New Messages" class="badge bg-primary">$ {{ car.price }}</span>
+        </div>
+    </div>
+    <div class="card-body">
+        <form>
+            {{ form.search }}
+            {{ form.filter_field_1 }}
+            <input type="submit" class="btn btn-default" value="Search">
+        </form>
+    </div>
 </div>
+
+
 {% if object_list %}
-{{ object_list}}
+    {% for car in object_list %}
+        <div class="card">
+            <div class="card-header">  
+                <h1><a href="{{ car.get_absolute_url }}">{{ car.brand }} {{ car.brand_model }}</a></h1>
+                <div class="card-tools">
+                    <span title="3 New Messages" class="badge bg-primary">$ {{ car.price }}</span>
+                </div>
+            </div>
+            <div class="card-body">
+        
+        <p class="date">
+            Miliege: {{ car.miliege }}
+        </p>
+        <p class="date">
+            Color: {{ car.color }}
+        </p>
+        {% for im in images %}
+            {% thumbnail im.image_place "300x200" crop="100%" as img %}
+            <img src="{{ img.url }}">
+            {% endthumbnail %} 
+        {% endfor %}
+        </div>
+            <div class="card-footer">
+                Added {{ car.added }}
+            </div>
+        </div>
+    {% endfor %}
+</div>
+{% else %}
+    <p>Empty!</p>
 {% endif %}
 
 {% if object_list %}
-    <ul>
-        {% for item in object_list %}
-            <p>{{item.brand}}</p>
-        {% endfor %}
-    </ul>
-{% else %}
-    <p>Empty!</p>
+{{ object_list}}
 {% endif %}
 {% endblock %}

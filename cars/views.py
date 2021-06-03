@@ -39,7 +39,8 @@ def AddNewCarSuccess(request):
 
 def HomeView(request):
     cars = Car.objects.all()
-    return render(request, 'home/home.html', {'cars': cars})
+    images = Image.objects.all()
+    return render(request, 'home/home.html', {'cars': cars, 'images': images})
 
 def CarDetailView(request, id):
     car = get_object_or_404(Car, id=id)

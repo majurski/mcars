@@ -30,4 +30,6 @@ class Image(models.Model):
     car = models.ForeignKey(Car, on_delete=models.CASCADE)
     image_place = models.ImageField(upload_to=get_image_filename, verbose_name='Image')
 
+    def get_car_id(self):
+        return self.car.id
 

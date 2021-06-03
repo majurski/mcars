@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+{% load thumbnail %}
 {% block title %}
     {% if subject %}
         {{ subject.title }} courses
@@ -8,14 +9,53 @@
 {% endblock %}
 
 {% block content %}
-<div class="module">
-    <ul>
-    {%for car in cars%}
-    <li>{{ car.brand }}</li>
-    <a href="{{ car.get_absolute_url }}">
-        {{ car.brand }}
-      </a>
-    {% endfor %}
-    </ul>
+{%for car in cars%}
+<div class="card">
+    <div class="card-header">  
+        <h3 class="card-title"><a href="{{ car.get_absolute_url }}">{{ car.brand }} {{ car.brand_model }}</a></h3>
+        <div class="card-tools">
+            <span title="3 New Messages" class="badge bg-primary">$ {{ car.price }}</span>
+        </div>
+    </div>
+    <div class="card-body">
+        <!-- Conversations are loaded here -->
+
+            <!-- Message. Default to the left -->
+            <div class="direct-chat-msg">
+            
+            <!-- /.direct-chat-infos -->
+            <div>
+            {% for im in images %}
+                {% if car.id == im.get_car_id %}
+                    {% thumbnail im.image_place "80x50" crop="100%" as img %}
+                    <a href="{{ car.get_absolute_url }}"><img src="{{ img.url}}"></a>
+                    {% endthumbnail %}
+                {% endif%}
+            {% endfor %}
+            </div>
+            <!-- /.direct-chat-text -->
+            </div>
+            <!-- /.direct-chat-msg -->
+
+            <!-- Message to the right -->
+            <div class="direct-chat-msg right">
+            <div class="direct-chat-infos clearfix">
+                <span class="direct-chat-timestamp float-left">Added {{ car.added }}</span>
+            </div>
+            <!-- /.direct-chat-infos -->
+            <!-- /.direct-chat-text -->
+            </div>
+            <!-- /.direct-chat-msg -->
+        <!--/.direct-chat-messages-->
+
+        <!-- Contacts are loaded here -->
+
+        <!-- /.direct-chat-pane -->
+        
+        </div>
+        
+        
 </div>
+{% endfor %}
 {% endblock %}
+

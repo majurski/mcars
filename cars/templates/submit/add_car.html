@@ -8,23 +8,32 @@
 {% endblock %}
 
 {% block content %}
-<div class="module">
-    <form action="." method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        {% for hidden in form.hidden_fields %}
-            {{ hidden }}
-        {% endfor %}
-    
-        {% for field in form %}
-            {{ field.name }}
-            {{ field }} <br />
-        {% endfor %}
-    
-        {{ formset.management_form }}
-        {% for forms in formset %}
-            {{ forms }}<br />
-        {% endfor %}
-        <input type="submit" name="submit" value="Submit" />
-    </form>
+<div class="card">
+    <div class="card-header">  
+        <h1>Add car</h1>
+    </div>
+    <div class="card-body">
+        <form action="." method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {% for hidden in form.hidden_fields %}
+                {{ hidden }}
+            {% endfor %}
+        
+            {% for field in form %}
+                <div class="form-group">
+                <b>{{ field.name }}</b>
+                <div>{{ field }}</div>
+                </div>
+            {% endfor %}
+        
+            {{ formset.management_form }}
+            {% for forms in formset %}
+                <div class="form-group">   
+                    <div>{{ forms }}</div>
+                </div>
+            {% endfor %}
+            <input type="submit" name="submit" value="Add now" />
+        </form>
+    </div>
 </div>
 {% endblock %}

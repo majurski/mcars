@@ -4,13 +4,30 @@
 {% block title %}Zagla{% endblock %}
 
 {% block content %}
-  <h1>{{ car.brand }}</h1>
+<div class="card">
+    <div class="card-header">  
+        <h1>{{ car.brand }} {{ car.brand_model }}</h1>
+        <div class="card-tools">
+            <span title="3 New Messages" class="badge bg-primary">$ {{ car.price }}</span>
+        </div>
+    </div>
+    <div class="card-body">
+  
+  <p class="date">
+    Miliege: {{ car.miliege }}
+  </p>
+  <p class="date">
+    Color: {{ car.color }}
+  </p>
   {% for im in images %}
     {% thumbnail im.image_place "300x200" crop="100%" as img %}
        <img src="{{ img.url }}">
     {% endthumbnail %} 
   {% endfor %}
-  <p class="date">
+  </div>
+  <div class="card-footer">
     Added {{ car.added }}
-  </p>
+  </div>
+  
+</div>
 {% endblock %}
