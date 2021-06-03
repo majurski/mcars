@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load thumbnail %}
+{% load static %}
+{% block title %}Zagla{% endblock %}
+
+{% block content %}
+  <h1>{{ car.brand }}</h1>
+  {% for im in images %}
+    {% thumbnail im.image_place "300x200" crop="100%" as img %}
+       <img src="{{ img.url }}">
+    {% endthumbnail %} 
+  {% endfor %}
+  <p class="date">
+    Added {{ car.added }}
+  </p>
+{% endblock %}

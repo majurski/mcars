@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+    {% if subject %}
+        {{ subject.title }} courses
+    {% else %}
+        All courses
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="module">
+    <ul>
+    {%for car in cars%}
+    <li>{{ car.brand }}</li>
+    <a href="{{ car.get_absolute_url }}">
+        {{ car.brand }}
+      </a>
+    {% endfor %}
+    </ul>
+</div>
+{% endblock %}
