@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-rtt-e-$c3tm362x^9kh1_g5fw4i@_@5d-11%b&f5l5ue(iyqzz'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['mobilebg.herokuapp.com']
 
