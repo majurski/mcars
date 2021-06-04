@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}
+    {% if subject %}
+        {{ subject.title }} courses
+    {% else %}
+        All courses
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">  
+        <h1>Registration SUCCESSS!</h1>
+        <h2>Log-in here</h2>
+    </div>
+</div>
+{% endblock %}

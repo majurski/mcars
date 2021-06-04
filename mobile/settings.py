@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'cars.apps.CarsConfig',
     'search.apps.SearchConfig',
     'sorl.thumbnail',
+    'register.apps.RegisterConfig',
 ]
 
 MIDDLEWARE = [
@@ -116,6 +117,10 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
+
+LOGIN_URL = 'register:login'
+LOGIN_REDIRECT_URL = '/cars'
+LOGOUT_REDIRECT_URL = '/cars'
 
 
 # Static files (CSS, JavaScript, Images)

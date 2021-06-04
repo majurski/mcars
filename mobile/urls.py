@@ -21,8 +21,10 @@ from django.conf import settings
  
 
 urlpatterns = [
+    path('', include('cars.urls')),
     path('admin/', admin.site.urls),
     path('cars/', include('cars.urls')),
     path('search/', include('search.urls')),
+    path('register/', include('register.urls', 'django.contrib.auth.urls')),
 ] + static(settings.MEDIA_URL, document_root = settings.MEDIA_ROOT)
 
