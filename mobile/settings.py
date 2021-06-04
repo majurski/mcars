@@ -126,7 +126,9 @@ LOGOUT_REDIRECT_URL = '/cars'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-# STATIC_URL = 'https://mcarsbg.herokuapp.com/cars/static/'
+PROJECT_ROOT   =   os.path.join(os.path.abspath(__file__))
+STATIC_ROOT  =   os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_URL = '/static/'
 
 STATICFILES_DIRS = [
     ("static", BASE_DIR / 'static'),
