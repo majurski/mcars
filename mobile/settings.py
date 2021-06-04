@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-rtt-e-$c3tm362x^9kh1_g5fw4i@_@5d-11%b&f5l5ue(iyqzz
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['mcarsbg.herokuapp.com']
 
 
 # Application definition
@@ -126,9 +126,11 @@ LOGOUT_REDIRECT_URL = '/cars'
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
-STATIC_URL = '/static/'
+STATIC_URL = 'https://mcarsbg.herokuapp.com/static/'
 
-STATICFILES_DIRS = [("static", BASE_DIR / 'static'),
+STATICFILES_DIRS = [
+    ("static", BASE_DIR / 'static'),
+    ("media", BASE_DIR / 'media'),
 ]
 
 MEDIA_ROOT  = os.path.join(BASE_DIR, 'media')
